@@ -181,6 +181,10 @@ def merge_group(group):
             elif k in ("specialty", "big_items", "notes", "marketplaces") and rec.get(k) \
                     and rec[k].lower() not in out[k].lower():
                 out[k] = f"{out[k]} | {rec[k]}"
+    # La taille la plus grande prouvée l'emporte (Gros > Moyen > Petit > Inconnu).
+    sizes = [rec["size_tier"] for rec in group if rec.get("size_tier")]
+    if sizes:
+        out["size_tier"] = min(sizes, key=lambda t: SIZE_ORDER.get(t, 3))
     # Un signalement de fermeture l'emporte, puis une preuve d'activité récente.
     statuses = {rec["status"] for rec in group}
     for status in ("Peut-être fermé", "Actif"):
@@ -245,6 +249,8 @@ def load(research_dir, category):
     records = [r for r in records if r["country"] in COUNTRY_ORDER]
     merged = dedupe(records)
     for rec in merged:
+        if not rec["type"]:
+            print("  sans type (complément orphelin ?) :", rec["country"], "|", rec["name"])
         if not rec["google_maps"] and rec["type"] in PHYSICAL_TYPES:
             query = " ".join(x for x in (rec["name"], rec["address"] or rec["city"], rec["country"]) if x)
             rec["google_maps"] = "https://www.google.com/maps/search/?api=1&query=" + quote_plus(query)
@@ -306,7 +312,7 @@ def write_sheet(ws, columns, records, table_name):
     ws.row_dimensions[1].height = 30
 
     first_contact = col_letter(columns, "website")
-    last_contact = col_letter(columns, "email")
+    last_contact = col_letter(columns, "marketplaces")
     for r, rec in enumerate(records, start=2):
         for c, (_, key, _, kind) in enumerate(columns, start=1):
             cell = ws.cell(row=r, column=c)
@@ -408,7 +414,7 @@ def write_summary(ws, vinyl_n, pokemon_n):
         ("• Statut : Actif = activité vue en 2024-2026 ; Non vérifié = pas de preuve récente ; Peut-être fermé = une "
          "source évoque une fermeture (à vérifier avant contact).", False),
         ("• Nb canaux de contact (formule) = nombre de champs remplis parmi Site web, Instagram, Facebook, TikTok, "
-         "Téléphone, Email.", False),
+         "Téléphone, Email et Marketplaces (une boutique Shopee/Tokopedia/Carousell se contacte par messagerie).", False),
         ("• Google Maps : « Voir sur Maps » = lien trouvé dans les sources ; « Rechercher sur Maps » = lien de recherche "
          "généré à partir du nom et de l'adresse (boutiques physiques uniquement).", False),
         ("Méthode et limites", True),
