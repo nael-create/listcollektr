@@ -181,6 +181,12 @@ def merge_group(group):
             elif k in ("specialty", "big_items", "notes", "marketplaces") and rec.get(k) \
                     and rec[k].lower() not in out[k].lower():
                 out[k] = f"{out[k]} | {rec[k]}"
+    # Un signalement de fermeture l'emporte, puis une preuve d'activité récente.
+    statuses = {rec["status"] for rec in group}
+    for status in ("Peut-être fermé", "Actif"):
+        if status in statuses:
+            out["status"] = status
+            break
     seen, sources = set(), []
     for rec in group:
         for s in rec["sources"]:
