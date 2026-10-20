@@ -25,3 +25,17 @@ Chaque ligne cite ses sources. Les contacts viennent de recherches web publiques
 ```bash
 python scripts/build_lots_musique.py --research data/research_lots_musique --out Lots_Musique_250_RM45-60.xlsx --data-dir data
 ```
+
+## Paliers supplémentaires (octobre 2026)
+
+- `Vinyles_CD_100_nouveaux.xlsx` : 100 vinyles & CD (RM45–60) d'artistes connus, absents des autres fichiers.
+- `Lots_Uncommon_45_RM65-95.xlsx` : 45 lots Uncommon (sans Funko Pop).
+- `Lots_Rare_20_RM99-279.xlsx` : 20 lots Rare (harmonicas de marque, lightsticks K-pop, packs Funko, audio, vinyles collector).
+- Relevés bruts : `data/research_100/`, `data/research_uncommon/`, `data/research_rare/`.
+
+```bash
+python scripts/build_liste.py --research data/research_rare --out Lots_Rare_20_RM99-279.xlsx --total 20 \
+  --title "Lots Rare – 20 lots entre RM99 et RM279" --price-min 99 --price-max 279 \
+  --quota Harmonica=4 --quota K-pop=5 --quota "Funko Pop=4" --quota Audio=3 --quota Collector=4 \
+  --exclude data/lots_musique.json --exclude data/lots_uncommon.json --data-out data/lots_rare.json
+```
