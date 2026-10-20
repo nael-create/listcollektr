@@ -51,7 +51,8 @@ def norm_category(value):
 
 def norm_url(url):
     p = urlparse(url.strip())
-    return f"{p.netloc.lower().removeprefix('www.')}{p.path.rstrip('/')}"
+    query = f"?{p.query}" if p.query else ""  # ?variant=… / ?id=… désignent des produits différents
+    return f"{p.netloc.lower().removeprefix('www.')}{p.path.rstrip('/')}{query}"
 
 
 def norm_name(name):
@@ -72,6 +73,8 @@ def load(research_dir):
                 continue
             price_max = PRICE_MAX_BY_CAT.get(row["category"], PRICE_MAX)
             if not (PRICE_MIN <= row["price_myr"] <= price_max) or not row["url"]:
+                continue
+            if "BORDERLINE" in row["notes"]:  # lien musical jugé trop faible par la recherche
                 continue
             key_url = norm_url(row["url"])
             key_name = (row["category"], norm_name(row["name"]))
@@ -151,7 +154,26 @@ def drop_duplicates(rows):
         if key not in best or per_store[(r["category"], r["store"])] > per_store[(r["category"], best[key]["store"])]:
             best[key] = r
     keep = {id(r) for r in best.values()}
-    return [r for r in rows if "DUPLICATE" not in r["notes"] or id(r) in keep]
+    rows = [r for r in rows if "DUPLICATE" not in r["notes"] or id(r) in keep]
+
+    # Même Funko trouvé en Malaisie et à l'étranger : on garde la boutique malaisienne.
+    generic = {"funko", "pop", "vinyl", "figure", "rocks", "the", "and", "with", "animation"}
+
+    def tokens(name):
+        words = set(re.findall(r"[a-z0-9]+", name.lower())) - generic
+        return {w for w in words if not w.isdigit()}, {w for w in words if w.isdigit() and len(w) >= 3}
+
+    local = [tokens(r["name"]) for r in rows
+             if r["category"] == "Funko Pop" and str(r["store_country"]).lower() == "malaysia"]
+
+    def has_local_twin(r):
+        words, nums = tokens(r["name"])
+        return any((nums & l_nums and words & l_words) or (words and words <= l_words)
+                   for l_words, l_nums in local)
+
+    return [r for r in rows if not (r["category"] == "Funko Pop"
+                                    and str(r["store_country"]).lower() != "malaysia"
+                                    and has_local_twin(r))]
 
 
 def select(rows):
@@ -277,7 +299,7 @@ def write_summary(ws, n_lots, n_reserve, date):
         "• Boutiques malaisiennes en priorité ; les boutiques étrangères (ex. Singapour) indiquent la livraison et la conversion dans « Notes ».",
         "• CD : uniquement des albums cultes / classiques. Funko Pop : figurines de musiciens (Pop! Rocks, albums…).",
         "• Vinyles : quasi tous d'occasion (le neuf commence vers RM70 en Malaisie). Mudah.my = particuliers : confirmer avec le vendeur avant de payer.",
-        "• Funko Pop : aucune boutique malaisienne sous RM60 (RM65–70 en MY) → boutiques étrangères, surtout Fugitive Toys (USA). Frais de port en plus : grouper la commande.",
+        "• Funko Pop : plafond relevé à RM70. Les Funko musique en stock en Malaisie passent en premier (Keepsake GSC, Legendary Toys, PXP, AxToysCentury) ; le reste vient de l'étranger, surtout Fugitive Toys (USA) : frais de port en plus, grouper la commande.",
         "• Onglet « Réserve » : produits valides en plus, pour remplacer un article épuisé.",
         "• Les stocks bougent vite : revérifier la disponibilité au moment de commander.",
     ]
