@@ -80,12 +80,86 @@ def load(research_dir):
     return rows
 
 
+# Vinyles : artistes connus du grand public en priorité (ce sont des lots).
+FAMOUS_VINYL = [
+    "elton john", "u2", "beatles", "simon and garfunkel", "nirvana", "clash", "coldplay",
+    "neil diamond", "barry manilow", "jackson browne", "rod stewart", "lionel richie", "commodores",
+    "donna summer", "human league", "yes –", "bob seger", "steve winwood", "adam and the ants",
+    "olivia newton-john", "roger taylor", "agnetha", "frank sinatra", "smokey robinson",
+    "temptations", "stylistics", "three degrees", "barbra streisand", "pat benatar", "chicago",
+    "manhattan transfer", "tlc", "en vogue", "soul ii soul", "salt ‘n’ pepa", "bobby brown",
+    "thompson twins", "basement jaxx", "dead or alive", "ziggy marley", "brand new heavies",
+    "the shamen", "bomb the bass", "t’pau", "crystal waters", "la toya jackson", "teenage fanclub",
+    "bad brains", "los lobos", "zee avi", "fall, the", "wedding present", "manfred mann",
+    "sharifah aini", "bay city rollers", "sheena easton", "kris kristofferson", "connie francis",
+    "count basie", "chet atkins", "polnareff", "demis roussos", "gilbert o'sullivan", "gap band",
+    "matt bianco", "johnny hates jazz", "dennis deyoung", "yvonne elliman", "terry jacks",
+    "boz scaggs", "bachman", "nolans", "rick springfield", "joan armatrading", "tomita",
+    "motoharu sano", "mal waldron", "buddy rich", "sidney bechet", "liberace", "martin denny",
+    "teddy pendergrass", "jon anderson", "paul mauriat", "henry mancini", "herbie mann",
+    "guru josh", "altern 8", "gorilla biscuits", "kids from fame", "melanie", "ray conniff",
+]
+# « Autre » : sélection variée, objets les plus parlants pour un lot musique d'abord.
+AUTRE_PREFERRED = [
+    "kurt cobain", "record display frame", "snoopy headphones", "blackpink polaroid",
+    "jack white", "beyonce", "behringer", "snoopy blue cap", "bob dylan pop art",
+    "fanlight emblem", "cassette head cleaner", "frank sinatra pop art", "dua lipa",
+    "paul stanley", "twice", "stray kids", "mitski \"the land", "godflesh",
+]
+
+
+def autre_rank(r):
+    name = r["name"].lower()
+    for i, k in enumerate(AUTRE_PREFERRED):
+        if k in name:
+            return i
+    return len(AUTRE_PREFERRED)
+
+
+# Mots qui signalent un article moins pertinent (relevé par la recherche dans les notes).
+WEAK_MARKERS = ["[secondary pick]", "lower prior", "text-led", "coming-soon"]
+
+
+def priority(r):
+    """0 = à prendre en premier."""
+    text = f"{r['name']} {r['notes']}".lower()
+    if any(m in text for m in WEAK_MARKERS):
+        return 2
+    if r["category"] == "Vinyle":
+        return 0 if any(a in r["name"].lower() for a in FAMOUS_VINYL) else 1
+    if r["category"] == "Funko Pop":
+        # Pop! standard d'abord ; Vinyl Gold, Bitty, crossovers ensuite
+        return 1 if any(m in text for m in ["vinyl gold", "bitty", "crossover", "tinytan"]) else 0
+    return 0
+
+
+def drop_duplicates(rows):
+    """Même produit vendu par 2 boutiques (marqué DUPLICATE) : garde la boutique qui en vend le plus."""
+    per_store = {}
+    for r in rows:
+        per_store[(r["category"], r["store"])] = per_store.get((r["category"], r["store"]), 0) + 1
+    best = {}
+    for r in rows:
+        if "DUPLICATE" not in r["notes"]:
+            continue
+        m = re.search(r"same figure \(([^)]*)\)", r["notes"])
+        key = (r["category"], m.group(1) if m else r["name"])
+        if key not in best or per_store[(r["category"], r["store"])] > per_store[(r["category"], best[key]["store"])]:
+            best[key] = r
+    keep = {id(r) for r in best.values()}
+    return [r for r in rows if "DUPLICATE" not in r["notes"] or id(r) in keep]
+
+
 def select(rows):
-    """Applique les quotas ; boutiques malaisiennes en priorité (pas de frais de port internationaux)."""
+    """Applique les quotas ; artistes connus puis boutiques malaisiennes en priorité."""
+    rows = drop_duplicates(rows)
+
     def rank(r):
-        return (0 if str(r["store_country"]).lower() == "malaysia" else 1, r["store"], r["name"])
+        return (priority(r), 0 if str(r["store_country"]).lower() == "malaysia" else 1,
+                r["store"], r["name"])
 
     by_cat = {c: sorted([r for r in rows if r["category"] == c], key=rank) for c in QUOTAS}
+    by_cat["Autre"].sort(key=autre_rank)
     chosen = {}
     for cat, quota in QUOTAS.items():
         if quota is not None:
@@ -195,6 +269,8 @@ def write_summary(ws, n_lots, n_reserve, date):
         "• Stock : disponibilité lue dans les données produit de la boutique (variante « disponible »), pas de précommande.",
         "• Boutiques malaisiennes en priorité ; les boutiques étrangères (ex. Singapour) indiquent la livraison et la conversion dans « Notes ».",
         "• CD : uniquement des albums cultes / classiques. Funko Pop : figurines de musiciens (Pop! Rocks, albums…).",
+        "• Vinyles : quasi tous d'occasion (le neuf commence vers RM70 en Malaisie). Mudah.my = particuliers : confirmer avec le vendeur avant de payer.",
+        "• Funko Pop : aucune boutique malaisienne sous RM60 (RM65–70 en MY) → boutiques étrangères, surtout Fugitive Toys (USA). Frais de port en plus : grouper la commande.",
         "• Onglet « Réserve » : produits valides en plus, pour remplacer un article épuisé.",
         "• Les stocks bougent vite : revérifier la disponibilité au moment de commander.",
     ]
