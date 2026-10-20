@@ -2686,6 +2686,39 @@
   },
   {
    "category": "Autre",
+   "name": "Johnny Cash Music Boxy Graphic Tee (Cotton On, licensed)",
+   "price_myr": 45.0,
+   "url": "https://cottonon.com/MY/johnny-cash-music-boxy-graphic-tee/2059306-79.html",
+   "store": "Cotton On Malaysia",
+   "store_country": "Malaysia",
+   "stock_evidence": "Product page price 45.00 (sale from RM109); size selector: XS, 2XS, 3XS available, S/M out of stock - checked 2026-10-20",
+   "shipping_note": "Ships within Malaysia (cottonon.com/MY)",
+   "notes": "T-shirt officiel (licensed artist merch) - Johnny Cash; women's boxy fit, only small sizes left"
+  },
+  {
+   "category": "Autre",
+   "name": "K-Pop Demon Hunters 4 Inch Mini Figure - Assorted (1 pc)",
+   "price_myr": 59.5,
+   "url": "https://www.toysrus.com.my/k-pop-demon-hunter-4-inch-mini-figure---assorted-1pc-10163048.html",
+   "store": "Toys\"R\"Us Malaysia",
+   "store_country": "Malaysia",
+   "stock_evidence": "Product page schema.org availability=InStock + 'Add to Cart' shown, price verified - checked 2026-10-20",
+   "shipping_note": "Ships within Malaysia (toysrus.com.my)",
+   "notes": "Figurine - KPop Demon Hunters (K-pop idol film/soundtrack, 'Golden'); random character"
+  },
+  {
+   "category": "Autre",
+   "name": "JAKI Rose Plante Music Box (building-block music box)",
+   "price_myr": 48.5,
+   "url": "https://www.toysrus.com.my/jaki-rose-plante-music-box-10042193.html",
+   "store": "Toys\"R\"Us Malaysia",
+   "store_country": "Malaysia",
+   "stock_evidence": "Product page schema.org availability=InStock + 'Add to Cart' shown, price verified - checked 2026-10-20",
+   "shipping_note": "Ships within Malaysia (toysrus.com.my)",
+   "notes": "Boite a musique - buildable brick music box (plays a melody when wound), no instrument needed"
+  },
+  {
+   "category": "Autre",
    "name": "Beyonce Knowles Pop Art (10'X10')",
    "price_myr": 59.9,
    "url": "https://www.bookxcess.com/products/beyonce-knowles-pop-art-10x10-286831",
@@ -2716,39 +2749,6 @@
    "stock_evidence": "Shopify products.json variant available=true + tag stock_availability:in_stock, checked 2026-10-20",
    "shipping_note": "Ships within Malaysia (Swee Lee MY online store)",
    "notes": "Pin's collector - Snoopy records-themed enamel pin (Peanuts licensed)"
-  },
-  {
-   "category": "Autre",
-   "name": "Bob Dylan Pop Art (10'X10')",
-   "price_myr": 59.9,
-   "url": "https://www.bookxcess.com/products/bob-dylan-pop-art-10x10-286760",
-   "store": "BookXcess",
-   "store_country": "Malaysia",
-   "stock_evidence": "Shopify product JSON (/products/HANDLE.js) variant available=true, checked 2026-10-20",
-   "shipping_note": "Ships within Malaysia (BookXcess online)",
-   "notes": "Cadre pop-art musicien (framed 26x26cm glossy pop-art print, ready to hang) - Bob Dylan. Same product line as other pop-art prints."
-  },
-  {
-   "category": "Autre",
-   "name": "Aespa FANLIGHT EMBLEM",
-   "price_myr": 49.0,
-   "url": "https://xduniverse.com.my/products/aespa-fanlight-emblem",
-   "store": "XD Universe",
-   "store_country": "Malaysia",
-   "stock_evidence": "Shopify product JSON (/products/HANDLE.js) variant available=true; description says 'Ship from Malaysia, ready stock' - checked 2026-10-20",
-   "shipping_note": "Ships from Malaysia (Subang Jaya store), same/next day",
-   "notes": "Merch K-pop officiel - Embleme de lightstick officiel; artist: AESPA; in-stock variants: KARINA, WINTER; sold by XD Universe as 'Ship from Malaysia, ready stock'"
-  },
-  {
-   "category": "Autre",
-   "name": "Vinyl Styl Audio Cassette Head Cleaner & Demagnetizer",
-   "price_myr": 59.0,
-   "url": "https://www.sweelee.com.my/products/vinyl-styl-audio-cassette-head-cleaner-and-demagnetizer",
-   "store": "Swee Lee Malaysia",
-   "store_country": "Malaysia",
-   "stock_evidence": "Shopify products.json variant available=true + tag stock_availability:in_stock, checked 2026-10-20",
-   "shipping_note": "Ships within Malaysia (Swee Lee MY online store)",
-   "notes": "Kit nettoyage cassette - tape head cleaner & demagnetizer"
   }
  ],
  "reserve": [
@@ -4899,6 +4899,39 @@
   },
   {
    "category": "Autre",
+   "name": "Bob Dylan Pop Art (10'X10')",
+   "price_myr": 59.9,
+   "url": "https://www.bookxcess.com/products/bob-dylan-pop-art-10x10-286760",
+   "store": "BookXcess",
+   "store_country": "Malaysia",
+   "stock_evidence": "Shopify product JSON (/products/HANDLE.js) variant available=true, checked 2026-10-20",
+   "shipping_note": "Ships within Malaysia (BookXcess online)",
+   "notes": "Cadre pop-art musicien (framed 26x26cm glossy pop-art print, ready to hang) - Bob Dylan. Same product line as other pop-art prints."
+  },
+  {
+   "category": "Autre",
+   "name": "Aespa FANLIGHT EMBLEM",
+   "price_myr": 49.0,
+   "url": "https://xduniverse.com.my/products/aespa-fanlight-emblem",
+   "store": "XD Universe",
+   "store_country": "Malaysia",
+   "stock_evidence": "Shopify product JSON (/products/HANDLE.js) variant available=true; description says 'Ship from Malaysia, ready stock' - checked 2026-10-20",
+   "shipping_note": "Ships from Malaysia (Subang Jaya store), same/next day",
+   "notes": "Merch K-pop officiel - Embleme de lightstick officiel; artist: AESPA; in-stock variants: KARINA, WINTER; sold by XD Universe as 'Ship from Malaysia, ready stock'"
+  },
+  {
+   "category": "Autre",
+   "name": "Vinyl Styl Audio Cassette Head Cleaner & Demagnetizer",
+   "price_myr": 59.0,
+   "url": "https://www.sweelee.com.my/products/vinyl-styl-audio-cassette-head-cleaner-and-demagnetizer",
+   "store": "Swee Lee Malaysia",
+   "store_country": "Malaysia",
+   "stock_evidence": "Shopify products.json variant available=true + tag stock_availability:in_stock, checked 2026-10-20",
+   "shipping_note": "Ships within Malaysia (Swee Lee MY online store)",
+   "notes": "Kit nettoyage cassette - tape head cleaner & demagnetizer"
+  },
+  {
+   "category": "Autre",
    "name": "Frank Sinatra Pop Art (10X10)",
    "price_myr": 59.9,
    "url": "https://www.bookxcess.com/products/frank-sinatra-pop-art-10x10-287504",
@@ -5108,6 +5141,17 @@
   },
   {
    "category": "Autre",
+   "name": "Lisa (BLACKPINK) Music Boxy Graphic Tee (Cotton On, licensed)",
+   "price_myr": 60.0,
+   "url": "https://cottonon.com/MY/lisa-music-boxy-graphic-tee/2059306-158.html",
+   "store": "Cotton On Malaysia",
+   "store_country": "Malaysia",
+   "stock_evidence": "Product page price 60.00 (sale from RM129); sizes 3XS, 2XS, XS, S, XL available (M, L out of stock) - checked 2026-10-20",
+   "shipping_note": "Ships within Malaysia (cottonon.com/MY)",
+   "notes": "T-shirt officiel (licensed artist merch) - LISA of BLACKPINK; women's boxy fit"
+  },
+  {
+   "category": "Autre",
    "name": "Fender Amp Logo Patch",
    "price_myr": 59.0,
    "url": "https://www.sweelee.com.my/products/fender-amp-logo-patch",
@@ -5248,6 +5292,61 @@
    "stock_evidence": "Product page (MYR) available=true, READY STOCK, inventory 1 - checked 2026-10-20",
    "shipping_note": "Ships within Malaysia",
    "notes": "Cassette - Indonesian folk duo (SE Asian band), 1 unit"
+  },
+  {
+   "category": "Autre",
+   "name": "JAKI Pink Rose Music Box (building-block music box)",
+   "price_myr": 48.5,
+   "url": "https://www.toysrus.com.my/jaki-pink-rose-music-box-10042194.html",
+   "store": "Toys\"R\"Us Malaysia",
+   "store_country": "Malaysia",
+   "stock_evidence": "Product page schema.org availability=InStock + 'Add to Cart' shown, price verified - checked 2026-10-20",
+   "shipping_note": "Ships within Malaysia (toysrus.com.my)",
+   "notes": "Boite a musique - buildable brick music box, pink rose design"
+  },
+  {
+   "category": "Autre",
+   "name": "KPop Demon Hunters Acrylic Board - Huntr/X",
+   "price_myr": 46.99,
+   "url": "https://www.toysrus.com.my/kpop-demon-hunters-acrylic-board---huntr-x-10131256.html",
+   "store": "Toys\"R\"Us Malaysia",
+   "store_country": "Malaysia",
+   "stock_evidence": "Product page schema.org availability=InStock + 'Add to Cart' shown, price verified - checked 2026-10-20",
+   "shipping_note": "Ships within Malaysia (toysrus.com.my)",
+   "notes": "Acrylic board collectible - Huntr/X (the K-pop girl group of KPop Demon Hunters)"
+  },
+  {
+   "category": "Autre",
+   "name": "KPop Demon Hunters Acrylic Standee - Huntr/X Rumi",
+   "price_myr": 46.99,
+   "url": "https://www.toysrus.com.my/kpop-demon-hunters-acrylic-standee---huntr-x-rumi-10131252.html",
+   "store": "Toys\"R\"Us Malaysia",
+   "store_country": "Malaysia",
+   "stock_evidence": "Product page schema.org availability=InStock + 'Add to Cart' shown, price verified - checked 2026-10-20",
+   "shipping_note": "Ships within Malaysia (toysrus.com.my)",
+   "notes": "Acrylic standee collectible - K-pop idol theme"
+  },
+  {
+   "category": "Autre",
+   "name": "KPop Demon Hunters Flat Plush Keychain - Huntrix Rumi (Golden Version)",
+   "price_myr": 46.99,
+   "url": "https://www.toysrus.com.my/kpop-demon-hunters-flat-plush-keychain---huntrix-rumi-golden-version-10131258.html",
+   "store": "Toys\"R\"Us Malaysia",
+   "store_country": "Malaysia",
+   "stock_evidence": "Product page schema.org availability=InStock + 'Add to Cart' shown, price verified - checked 2026-10-20",
+   "shipping_note": "Ships within Malaysia (toysrus.com.my)",
+   "notes": "Porte-cles peluche - 'Golden' song version, K-pop theme"
+  },
+  {
+   "category": "Autre",
+   "name": "KPop Demon Hunters Flat Plush Keychain - Saja Boys Jinu (Soda Pop Version)",
+   "price_myr": 46.99,
+   "url": "https://www.toysrus.com.my/kpop-demon-hunters-flat-plush-keychain---saja-boys-jinu-soda-pop-version-10131261.html",
+   "store": "Toys\"R\"Us Malaysia",
+   "store_country": "Malaysia",
+   "stock_evidence": "Product page schema.org availability=InStock + 'Add to Cart' shown, price verified - checked 2026-10-20",
+   "shipping_note": "Ships within Malaysia (toysrus.com.my)",
+   "notes": "Porte-cles peluche - Saja Boys boy band, 'Soda Pop' song version"
   },
   {
    "category": "Autre",

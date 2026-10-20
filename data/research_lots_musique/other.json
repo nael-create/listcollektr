@@ -713,5 +713,104 @@
   "stock_evidence": "Shopify product JSON (/products/HANDLE.js) variant available=true; description says 'Ship from Malaysia, ready stock' - checked 2026-10-20",
   "shipping_note": "Ships from Malaysia (Subang Jaya store), same/next day",
   "notes": "Merch K-pop officiel - Photo set officiel; artist: DAY6; sold by XD Universe as 'Ship from Malaysia, ready stock'"
+ },
+ {
+  "category": "Autre",
+  "name": "Johnny Cash Music Boxy Graphic Tee (Cotton On, licensed)",
+  "price_myr": 45.0,
+  "url": "https://cottonon.com/MY/johnny-cash-music-boxy-graphic-tee/2059306-79.html",
+  "store": "Cotton On Malaysia",
+  "store_country": "Malaysia",
+  "stock_evidence": "Product page price 45.00 (sale from RM109); size selector: XS, 2XS, 3XS available, S/M out of stock - checked 2026-10-20",
+  "shipping_note": "Ships within Malaysia (cottonon.com/MY)",
+  "notes": "T-shirt officiel (licensed artist merch) - Johnny Cash; women's boxy fit, only small sizes left"
+ },
+ {
+  "category": "Autre",
+  "name": "Lisa (BLACKPINK) Music Boxy Graphic Tee (Cotton On, licensed)",
+  "price_myr": 60.0,
+  "url": "https://cottonon.com/MY/lisa-music-boxy-graphic-tee/2059306-158.html",
+  "store": "Cotton On Malaysia",
+  "store_country": "Malaysia",
+  "stock_evidence": "Product page price 60.00 (sale from RM129); sizes 3XS, 2XS, XS, S, XL available (M, L out of stock) - checked 2026-10-20",
+  "shipping_note": "Ships within Malaysia (cottonon.com/MY)",
+  "notes": "T-shirt officiel (licensed artist merch) - LISA of BLACKPINK; women's boxy fit"
+ },
+ {
+  "category": "Autre",
+  "name": "JAKI Rose Plante Music Box (building-block music box)",
+  "price_myr": 48.5,
+  "url": "https://www.toysrus.com.my/jaki-rose-plante-music-box-10042193.html",
+  "store": "Toys\"R\"Us Malaysia",
+  "store_country": "Malaysia",
+  "stock_evidence": "Product page schema.org availability=InStock + 'Add to Cart' shown, price verified - checked 2026-10-20",
+  "shipping_note": "Ships within Malaysia (toysrus.com.my)",
+  "notes": "Boite a musique - buildable brick music box (plays a melody when wound), no instrument needed"
+ },
+ {
+  "category": "Autre",
+  "name": "JAKI Pink Rose Music Box (building-block music box)",
+  "price_myr": 48.5,
+  "url": "https://www.toysrus.com.my/jaki-pink-rose-music-box-10042194.html",
+  "store": "Toys\"R\"Us Malaysia",
+  "store_country": "Malaysia",
+  "stock_evidence": "Product page schema.org availability=InStock + 'Add to Cart' shown, price verified - checked 2026-10-20",
+  "shipping_note": "Ships within Malaysia (toysrus.com.my)",
+  "notes": "Boite a musique - buildable brick music box, pink rose design"
+ },
+ {
+  "category": "Autre",
+  "name": "K-Pop Demon Hunters 4 Inch Mini Figure - Assorted (1 pc)",
+  "price_myr": 59.5,
+  "url": "https://www.toysrus.com.my/k-pop-demon-hunter-4-inch-mini-figure---assorted-1pc-10163048.html",
+  "store": "Toys\"R\"Us Malaysia",
+  "store_country": "Malaysia",
+  "stock_evidence": "Product page schema.org availability=InStock + 'Add to Cart' shown, price verified - checked 2026-10-20",
+  "shipping_note": "Ships within Malaysia (toysrus.com.my)",
+  "notes": "Figurine - KPop Demon Hunters (K-pop idol film/soundtrack, 'Golden'); random character"
+ },
+ {
+  "category": "Autre",
+  "name": "KPop Demon Hunters Acrylic Board - Huntr/X",
+  "price_myr": 46.99,
+  "url": "https://www.toysrus.com.my/kpop-demon-hunters-acrylic-board---huntr-x-10131256.html",
+  "store": "Toys\"R\"Us Malaysia",
+  "store_country": "Malaysia",
+  "stock_evidence": "Product page schema.org availability=InStock + 'Add to Cart' shown, price verified - checked 2026-10-20",
+  "shipping_note": "Ships within Malaysia (toysrus.com.my)",
+  "notes": "Acrylic board collectible - Huntr/X (the K-pop girl group of KPop Demon Hunters)"
+ },
+ {
+  "category": "Autre",
+  "name": "KPop Demon Hunters Acrylic Standee - Huntr/X Rumi",
+  "price_myr": 46.99,
+  "url": "https://www.toysrus.com.my/kpop-demon-hunters-acrylic-standee---huntr-x-rumi-10131252.html",
+  "store": "Toys\"R\"Us Malaysia",
+  "store_country": "Malaysia",
+  "stock_evidence": "Product page schema.org availability=InStock + 'Add to Cart' shown, price verified - checked 2026-10-20",
+  "shipping_note": "Ships within Malaysia (toysrus.com.my)",
+  "notes": "Acrylic standee collectible - K-pop idol theme"
+ },
+ {
+  "category": "Autre",
+  "name": "KPop Demon Hunters Flat Plush Keychain - Huntrix Rumi (Golden Version)",
+  "price_myr": 46.99,
+  "url": "https://www.toysrus.com.my/kpop-demon-hunters-flat-plush-keychain---huntrix-rumi-golden-version-10131258.html",
+  "store": "Toys\"R\"Us Malaysia",
+  "store_country": "Malaysia",
+  "stock_evidence": "Product page schema.org availability=InStock + 'Add to Cart' shown, price verified - checked 2026-10-20",
+  "shipping_note": "Ships within Malaysia (toysrus.com.my)",
+  "notes": "Porte-cles peluche - 'Golden' song version, K-pop theme"
+ },
+ {
+  "category": "Autre",
+  "name": "KPop Demon Hunters Flat Plush Keychain - Saja Boys Jinu (Soda Pop Version)",
+  "price_myr": 46.99,
+  "url": "https://www.toysrus.com.my/kpop-demon-hunters-flat-plush-keychain---saja-boys-jinu-soda-pop-version-10131261.html",
+  "store": "Toys\"R\"Us Malaysia",
+  "store_country": "Malaysia",
+  "stock_evidence": "Product page schema.org availability=InStock + 'Add to Cart' shown, price verified - checked 2026-10-20",
+  "shipping_note": "Ships within Malaysia (toysrus.com.my)",
+  "notes": "Porte-cles peluche - Saja Boys boy band, 'Soda Pop' song version"
  }
 ]

@@ -102,7 +102,8 @@ FAMOUS_VINYL = [
 # « Autre » : sélection variée, objets les plus parlants pour un lot musique d'abord.
 AUTRE_PREFERRED = [
     "kurt cobain", "record display frame", "snoopy headphones", "blackpink polaroid",
-    "jack white", "beyonce", "behringer", "snoopy blue cap", "bob dylan pop art",
+    "jack white", "johnny cash", "k-pop demon hunters 4 inch", "rose plante music box",
+    "beyonce", "behringer", "snoopy blue cap", "bob dylan pop art",
     "fanlight emblem", "cassette head cleaner", "frank sinatra pop art", "dua lipa",
     "paul stanley", "twice", "stray kids", "mitski \"the land", "godflesh",
 ]
