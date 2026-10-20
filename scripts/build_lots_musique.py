@@ -27,6 +27,8 @@ FIELDS = [
     "stock_evidence", "shipping_note", "notes",
 ]
 PRICE_MIN, PRICE_MAX = 45.0, 60.0
+# Plafond relevé pour les Funko : sous RM60 il n'y en a pas en Malaisie (RM65–70).
+PRICE_MAX_BY_CAT = {"Funko Pop": 70.0}
 TOTAL = 250
 # Ordre = ordre d'affichage. Les Funko prennent tout ce qui reste après les autres quotas.
 QUOTAS = {"Vinyle": 88, "CD": 62, "Funko Pop": None, "Livre": 13, "Autre": 12}
@@ -68,7 +70,8 @@ def load(research_dir):
                 row["price_myr"] = round(float(row["price_myr"]), 2)
             except (TypeError, ValueError):
                 continue
-            if not (PRICE_MIN <= row["price_myr"] <= PRICE_MAX) or not row["url"]:
+            price_max = PRICE_MAX_BY_CAT.get(row["category"], PRICE_MAX)
+            if not (PRICE_MIN <= row["price_myr"] <= price_max) or not row["url"]:
                 continue
             key_url = norm_url(row["url"])
             key_name = (row["category"], norm_name(row["name"]))
@@ -156,8 +159,11 @@ def select(rows):
     rows = drop_duplicates(rows)
 
     def rank(r):
-        return (priority(r), 0 if str(r["store_country"]).lower() == "malaysia" else 1,
-                r["store"], r["name"])
+        local = 0 if str(r["store_country"]).lower() == "malaysia" else 1
+        if r["category"] == "Funko Pop":
+            # Funko : boutique malaisienne d'abord (pas de port international), quel que soit le type
+            return (local, priority(r), r["store"], r["name"])
+        return (priority(r), local, r["store"], r["name"])
 
     by_cat = {c: sorted([r for r in rows if r["category"] == c], key=rank) for c in QUOTAS}
     by_cat["Autre"].sort(key=autre_rank)
@@ -222,7 +228,7 @@ def write_items(ws, items, table_name):
 
 
 def write_summary(ws, n_lots, n_reserve, date):
-    ws["A1"] = "Lots musique – 250 lots entre RM45 et RM60"
+    ws["A1"] = "Lots musique – 250 lots entre RM45 et RM60 (Funko Pop : jusqu'à RM70)"
     ws["A1"].font = Font(name=FONT, size=14, bold=True)
     ws["A2"] = f"Prix et stock relevés le {date} directement sur les boutiques (lien dans l'onglet Lots)."
     ws["A2"].font = Font(name=FONT, italic=True, size=10)
@@ -266,7 +272,7 @@ def write_summary(ws, n_lots, n_reserve, date):
 
     notes = [
         "Méthode",
-        "• Prix = prix article affiché sur la boutique, hors frais de port. Fourchette appliquée : RM45 ≤ prix ≤ RM60.",
+        "• Prix = prix article affiché sur la boutique, hors frais de port. Fourchette appliquée : RM45 ≤ prix ≤ RM60, sauf Funko Pop jusqu'à RM70.",
         "• Stock : disponibilité lue dans les données produit de la boutique (variante « disponible »), pas de précommande.",
         "• Boutiques malaisiennes en priorité ; les boutiques étrangères (ex. Singapour) indiquent la livraison et la conversion dans « Notes ».",
         "• CD : uniquement des albums cultes / classiques. Funko Pop : figurines de musiciens (Pop! Rocks, albums…).",
