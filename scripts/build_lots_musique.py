@@ -169,6 +169,7 @@ def drop_duplicates(rows):
     def has_local_twin(r):
         words, nums = tokens(r["name"])
         return any((nums & l_nums and words & l_words) or (words and words <= l_words)
+                   or (len(l_words) >= 2 and l_words <= words)
                    for l_words, l_nums in local)
 
     return [r for r in rows if not (r["category"] == "Funko Pop"
@@ -299,7 +300,7 @@ def write_summary(ws, n_lots, n_reserve, date):
         "• Boutiques malaisiennes en priorité ; les boutiques étrangères (ex. Singapour) indiquent la livraison et la conversion dans « Notes ».",
         "• CD : uniquement des albums cultes / classiques. Funko Pop : figurines de musiciens (Pop! Rocks, albums…).",
         "• Vinyles : quasi tous d'occasion (le neuf commence vers RM70 en Malaisie). Mudah.my = particuliers : confirmer avec le vendeur avant de payer.",
-        "• Funko Pop : plafond relevé à RM70. Les Funko musique en stock en Malaisie passent en premier (Keepsake GSC, Legendary Toys, PXP, AxToysCentury) ; le reste vient de l'étranger, surtout Fugitive Toys (USA) : frais de port en plus, grouper la commande.",
+        "• Funko Pop : plafond relevé à RM70. Les Funko musique en stock en Malaisie passent en premier (Sheldonet, Keepsake GSC, Legendary Toys, PXP, AxToysCentury) ; le reste vient de l'étranger, surtout Fugitive Toys (USA) : frais de port en plus, grouper la commande.",
         "• Onglet « Réserve » : produits valides en plus, pour remplacer un article épuisé.",
         "• Les stocks bougent vite : revérifier la disponibilité au moment de commander.",
     ]
